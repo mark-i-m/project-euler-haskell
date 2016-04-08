@@ -1,3 +1,5 @@
+GHC=stack runghc -- 
+
 SRC=$(wildcard *.hs)
 TARGETS=$(patsubst %.hs, %, $(SRC))
 HIFILES=$(patsubst %.hs, %.hi, $(SRC))
@@ -6,7 +8,7 @@ OFILES=$(patsubst %.hs, %.o, $(SRC))
 all: $(TARGETS) 
 
 %: %.hs
-	ghc --make $@
+	$(GHC) $@
 
 clean:
 	rm -f $(TARGETS)
